@@ -19,43 +19,58 @@ GoRegex/
 ├── main.go               # The main CLI application
 ├── workersSweetSpot.go   # Script to benchmark and find optimal worker count
 ├── go.mod                # Go module definition
-└── README.md             # This documentations
-``` 
+└── README.md             # This documentation
+```
 
 ## Getting Started
+
 ### Prerequisites
-- Go (version 1.18 or higher recommended)
+
+* Go (version 1.18 or higher recommended)
 
 ### Installation
-- Clone the repository :
-``` 
+
+* Clone the repository :
+
+```
 git clone [https://github.com/yourusername/GoRegex.git](https://github.com/yourusername/GoRegex.git)
 cd GoRegex
-``` 
-- Initialize the module : 
+```
+
+* Initialize the module :
+
 ```
 go mod tidy
 ```
+
 ## Usage
+
 ### The main search tool (`main.go`)
+
 You can run the tool directly using `go.run`.
 Basic Usage (uses defaults):
-- Default File: `data/LongLog.txt`
-- Default Pattern: `[a-Z]`
+
+* Default File: `data/LongLog.txt`
+* Default Pattern: `[A-Za-z]`
+
 ```
 go run main.go
-```
 
 **Custom search** : Use flags to specify your own file and pattern
-- `-file` : path to text file
-- `-pattern` : the regex string to search for
+- `--file | -f` : path to text file
+- `--pattern | -p` : the regex string to search for
+- `--workers | -w : specify the number of workers`
+```
 
-**Example : finding emails** 
-``` 
-go run main.go -file=data/my_log.txt -pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-``` 
-**Example : finding errors** 
-``` 
+**Example : finding emails**
+
+```
+go run main.go --file=data/my_log.txt --pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+```
+
+**Example : finding errors**
+
+```
 go run workersSweetSpot.go
 ```
 
